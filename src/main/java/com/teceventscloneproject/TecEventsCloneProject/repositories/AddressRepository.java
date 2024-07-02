@@ -1,4 +1,4 @@
-package com.teceventscloneproject.TecEventsCloneProject.domain.repositories;
+package com.teceventscloneproject.TecEventsCloneProject.repositories;
 
 import com.teceventscloneproject.TecEventsCloneProject.domain.address.Address;
 import org.springframework.data.jpa.repository.JpaRepository;

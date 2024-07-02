@@ -1,6 +1,6 @@
 package com.teceventscloneproject.TecEventsCloneProject.domain.address;
 
-import com.teceventscloneproject.TecEventsCloneProject.domain.Event;
+import com.teceventscloneproject.TecEventsCloneProject.domain.event.Event;
 import jakarta.persistence.*;
 
 import java.util.UUID;
