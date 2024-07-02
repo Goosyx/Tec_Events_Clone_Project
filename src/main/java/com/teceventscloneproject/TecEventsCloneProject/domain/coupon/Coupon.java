@@ -1,7 +1,7 @@
 package com.teceventscloneproject.TecEventsCloneProject.domain.coupon;
 
 
-import com.teceventscloneproject.TecEventsCloneProject.domain.Event;
+import com.teceventscloneproject.TecEventsCloneProject.domain.event.Event;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
