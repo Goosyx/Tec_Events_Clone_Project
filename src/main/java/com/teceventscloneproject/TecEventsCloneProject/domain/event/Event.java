@@ -1,4 +1,4 @@
-package com.teceventscloneproject.TecEventsCloneProject.domain;
+package com.teceventscloneproject.TecEventsCloneProject.domain.event;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +16,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Event {
 
     @Id
