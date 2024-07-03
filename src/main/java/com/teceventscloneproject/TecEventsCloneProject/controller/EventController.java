@@ -2,11 +2,14 @@ package com.teceventscloneproject.TecEventsCloneProject.controller;
 
 import com.teceventscloneproject.TecEventsCloneProject.domain.event.Event;
 import com.teceventscloneproject.TecEventsCloneProject.domain.event.EventRequestDTO;
+import com.teceventscloneproject.TecEventsCloneProject.domain.event.EventResponseDTO;
 import com.teceventscloneproject.TecEventsCloneProject.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/event")
@@ -29,4 +32,13 @@ public class EventController {
         Event newEvent = this.eventService.createEvent(eventRequestDTO);
         return ResponseEntity.ok(newEvent);
     }
+
+@GetMapping
+public ResponseEntity<List<EventResponseDTO>> getEvents(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size){
+    List<EventResponseDTO> allEvents = this.eventService.getUpcomingEvents(page,size);
+    return ResponseEntity.ok(allEvents);
+
+
+}
+
 }
