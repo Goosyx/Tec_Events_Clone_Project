@@ -2,11 +2,17 @@ package com.teceventscloneproject.TecEventsCloneProject.domain.address;
 
 import com.teceventscloneproject.TecEventsCloneProject.domain.event.Event;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "address")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Address {
 
     @Id

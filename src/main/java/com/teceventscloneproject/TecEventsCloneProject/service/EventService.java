@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static java.util.Arrays.stream;
 
 @Service
 public class EventService {
@@ -32,6 +31,9 @@ public class EventService {
 
     @Autowired
     private AmazonS3 s3Client;
+
+    @Autowired
+    private AddressService addressService;
 
     @Autowired
     private EventRepository repository;
@@ -54,6 +56,10 @@ public class EventService {
 
         repository.save(newEvent);
 
+        if(!data.remote()){
+            this.addressService.createAddress(data, newEvent);
+        }
+
         return newEvent;
     }
 
@@ -66,16 +72,12 @@ public class EventService {
 
 
 
-
-
-
-
-
-
-
-
-
-
+    public List<EventResponseDTO> getFilteredEvents(int page, int size, String title, String city, String uf, Date  starDate, Date endDate){
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Event> eventsPage = this.repository.findFilteredEvents(new Date(), title, city, uf, starDate, endDate, pageable);
+        return eventsPage.map(event -> new EventResponseDTO(event.getId(), event.getTitle(), event.getDescription(), event.getDate(), "", "", event.getRemote(), event.getEventUrl(), event.getImgUrl()))
+                .stream().toList();
+    }
 
 
 
@@ -93,6 +95,9 @@ public class EventService {
             return "";
         }
     }
+
+
+
 
     private  File convertMultipartToFile(MultipartFile multipartFile) throws IOException {
 
